@@ -1,0 +1,19 @@
+version: '3.3'
+
+services:
+  awesome-project:
+    build: ./
+    command: ./awesome_project
+    ports:
+      - 8000:8000
+    depends_on:
+      - db
+  db:
+    restart: always
+    image: postgres:16-alpine
+    environment:
+      POSTGRES_DB: "test_db"
+      POSTGRES_USER: "awesome_project"
+      POSTGRES_PASSWORD: 123
+    ports:
+      - "5436:5432"
