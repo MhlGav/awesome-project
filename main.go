@@ -1,7 +1,10 @@
 package main
 
 func main() {
-	DBbuilding()
+	DBDescription()
+	DBFurniture()
+	DBFamily()
+	DBPet()
 	ForRooms()
 	ForFamilyMembers()
 }
