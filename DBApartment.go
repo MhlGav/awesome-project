@@ -48,15 +48,15 @@ func DBFurniture() {
 	var living_room string
 	var kitchen string
 
-	rows1, err := conn.Query(context.Background(), "select bedroom, living_room, kitchen from furniture")
+	rows, err := conn.Query(context.Background(), "select bedroom, living_room, kitchen from furniture")
 	if err != nil {
 		fmt.Fprintf(os.Stderr, "QueryRow failed: %v\n", err)
 		os.Exit(1)
 	}
 
 	fmt.Println("\nFURNITURA:")
-	for rows1.Next() {
-		rows1.Scan(&bedroom, &living_room, &kitchen)
+	for rows.Next() {
+		rows.Scan(&bedroom, &living_room, &kitchen)
 		fmt.Println("bedroom:", bedroom, "\n living_room:", living_room, "\n  kitchen:", kitchen)
 	}
 }

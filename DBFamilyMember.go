@@ -18,15 +18,15 @@ func DBFamily() {
 
 	var members string
 
-	rows2, err := conn.Query(context.Background(), "select members from family")
+	rows, err := conn.Query(context.Background(), "select members from family")
 	if err != nil {
 		fmt.Fprintf(os.Stderr, "QueryRow failed: %v\n", err)
 		os.Exit(1)
 	}
 
 	fmt.Println("\nFAMILY:")
-	for rows2.Next() {
-		rows2.Scan(&members)
+	for rows.Next() {
+		rows.Scan(&members)
 		fmt.Println(members)
 	}
 }
@@ -41,15 +41,15 @@ func DBPet() {
 
 	var name string
 
-	rows3, err := conn.Query(context.Background(), "select name from pet")
+	rows, err := conn.Query(context.Background(), "select name from pet")
 	if err != nil {
 		fmt.Fprintf(os.Stderr, "QueryRow failed: %v\n", err)
 		os.Exit(1)
 	}
 
 	fmt.Println("\nPET:")
-	for rows3.Next() {
-		rows3.Scan(&name)
+	for rows.Next() {
+		rows.Scan(&name)
 		fmt.Println(name, "\n")
 	}
 }
